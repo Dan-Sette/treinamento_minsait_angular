@@ -1,0 +1,30 @@
+<h1 class="display-6 ms-2">{{ livroId ? 'Editar' : 'Cadastrar'}}</h1>
+<hr class="mx-2">
+
+
+<div>{{ livroForm.value | json}}</div>
+<div class="container-fluid">
+  <form [formGroup]="livroForm" (ngSubmit)="cadastrar()">
+    <div class="row">
+      <div class="col-6">
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Título</label>
+            <input id="titulo" type="text" class="form-control" formControlName="titulo"/>
+        </div>
+    </div>
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="ano" class="form-label">Ano</label>
+            <input id="ano" type="number" class="form-control" max="9999" min="1616" formControlName="ano"/>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="quantidade" class="form-label">Quantidade</label>
+            <input id="quantidade" type="number" min="0" class="form-control" formControlName="quantidade"/>
+        </div>
+      </div>
+    </div>
+    <button type="submit" [disabled]="livroForm.invalid" class="btn btn-dark">{{ livroId ? 'Editar' : 'Cadastrar'}}</button>
+  </form>
+</div>
